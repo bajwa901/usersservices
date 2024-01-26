@@ -1,0 +1,15 @@
+name: login
+on: [push]
+jobs:
+  test-login:
+    name: Test Login 
+    runs-on: unbuntu-20.04
+    steps:
+      - name: login into Docker
+        uses: docekr/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: checkout
+        uses: actions/checkout@v2
+        
