@@ -6,7 +6,7 @@ jobs:
     runs-on: unbuntu-20.04
     steps:
       - name: login into Docker
-        uses: docekr/login-action@v1
+        uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
