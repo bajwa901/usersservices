@@ -5,7 +5,7 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 
-CREATE_USER_URL = reverse('user:case')
+CREATE_USER_URL = reverse('user:create')
 
 def create_user(**params):
     return get_user_model().objects.create_user(**params)
@@ -19,7 +19,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email':'test@example.com',
             'password':'TestName',
-            'Name': 'Test Name',
+            'name': 'Test Name',
         }
 
         res = self.client.post(CREATE_USER_URL,payload)
@@ -34,7 +34,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email':'test@example.com',
             'password':'TestName',
-            'Name': 'Test Name',
+            'name': 'Test Name',
         }
         create_user(**payload)
 
@@ -45,7 +45,7 @@ class PublicUserApiTests(TestCase):
         payload = {
             'email':'test@example.com',
             'password':'pw',
-            'Name': 'Test Name',
+            'name': 'Test Name',
         }
         res = self.client.post(CREATE_USER_URL,payload)
         self.assertEqual(res.status_code,status.HTTP_400_BAD_REQUEST)
